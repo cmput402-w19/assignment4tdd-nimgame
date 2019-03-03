@@ -2,7 +2,7 @@ import exceptions.InvalidPickException;
 import org.junit.Before;
 import org.junit.Test;
 
-public class Boardtest {
+public class BoardTest {
     private Board board;
 
     @Before
