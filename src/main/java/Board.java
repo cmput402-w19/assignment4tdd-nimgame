@@ -31,9 +31,9 @@ public class Board {
 
         heap[heapNum] -= numOfStones;
 
-        for(int i = 0 ; i < 3 ; ++i){
+        for(int i = 0 ; i < heaplen ; ++i){
             if(heap[i] != 0) break;
-            if(i == 2 ){winner = currPlayer;}
+            if(i == (heaplen - 1)){winner = currPlayer;}
         }
 
         if(currPlayer.equals(player.A))
@@ -44,8 +44,10 @@ public class Board {
     }
 
     public boolean isGameOver() {
-        if(winner == null) return false;
-        else return true;
+        for(int i = 0 ; i < heaplen ; ++i){
+            if(heap[i] != 0) return false;
+        }
+        return true;
     }
 
     public void print(){
