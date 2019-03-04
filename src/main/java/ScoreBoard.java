@@ -44,11 +44,13 @@ public class ScoreBoard{
 	}
 
 	public void incrementNumOfWins(Player player){
-		if (player == Player.A){
-			scoreBoard[0][0] += 1;
-		}
-		else if(player == Player.B){
-			scoreBoard[1][0] += 1;
+		switch (player) {
+			case A:
+				scoreBoard[0][0] += 1;
+				break;
+			case B:
+				scoreBoard[1][0] += 1;
+				break;
 		}
 	}
 
