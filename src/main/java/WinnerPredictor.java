@@ -8,6 +8,10 @@ public class WinnerPredictor {
 
     }
 
+    public WinnerPredictor(int[] testState1, Board.player a) {
+
+    }
+
     public Board.player PredictWinner(int[] heap, Board.player currPlayer){
         return Board.player.A;
     }
@@ -27,5 +31,9 @@ public class WinnerPredictor {
 
     public boolean GoodMoveCheck(int[] heap) {
         return true;
+    }
+
+    public int[] GetGoodMove(int[] testState1) {
+
     }
 }

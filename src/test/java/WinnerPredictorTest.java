@@ -1,25 +1,31 @@
 import exceptions.InvalidPickException;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.Arrays;
-
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class WinnerPredictorTest {
 
     private WinnerPredictor winnerPredictor;
+    private WinnerPredictor winnerPredictorNull;
 
     @Before
     public void setup() {
-        winnerPredictor = new WinnerPredictor();
-
+        int[] testState1 = {0, 3, 2};
+        Board.player A = Board.player.A;
+        winnerPredictor = new WinnerPredictor(testState1, A);
+        winnerPredictorNull = new WinnerPredictor();
     }
 
     @Test
     public void testInit(){
+        assert (winnerPredictorNull.getPrePredictWinner() == null);
+        assert (winnerPredictorNull.getPreState() == null);
 
+        int[] testState1 = {0, 3, 2};
+        assert (winnerPredictor.getPrePredictWinner().equals(Board.player.A));
+        assert (Arrays.equals(winnerPredictor.getPreState(), testState1));
     }
 
     @Test
@@ -58,7 +64,6 @@ public class WinnerPredictorTest {
         int[] goalState = {0, 2, 2};
 
         assert (Arrays.equals(winnerPredictor.getPreState(), testState1));
-        assert (Arrays.equals(winnerPredictor.GetGoodMove(), goalState));
-
+        assert (Arrays.equals(winnerPredictor.GetGoodMove(testState1), goalState));
     }
 }
