@@ -18,4 +18,15 @@ public class ScoreBoardTest {
         assert(scoreBoard.getNumOfWins(ScoreBoard.Player.A) == 1);
         assert(scoreBoard.getNumOfWins(ScoreBoard.Player.B) == 2);
     }
+
+    @Test
+    public void testGetNumOfLoses(){
+        int[][] scores = new int[2][3];
+        scores[0][1] = 1;
+        scores[1][1] = 2;
+        scoreBoard = new ScoreBoard(scores);
+
+        assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.A) == 1);
+        assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.B) == 2);
+    }
 }
