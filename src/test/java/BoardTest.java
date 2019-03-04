@@ -14,12 +14,11 @@ public class BoardTest {
 
     @Test
     public void testInit() {
-        for (int i = 0; i < 3; i++) {
-                assert (board.getNumAtHeap(i) >= 0);
-        }
-
-        assert (board.getCurrPlayer().equals(Board.player.A));
-        assert (board.getWinner() == null);
+        assert(board.getNumAtHeap(0) == 3);
+        assert(board.getNumAtHeap(1) == 4);
+        assert(board.getNumAtHeap(2) == 5);
+        assert(board.getCurrPlayer().equals(Board.player.A));
+        assert(board.getWinner() == null);
     }
 
     @Test
@@ -61,6 +60,36 @@ public class BoardTest {
     @Test
     public void printTest() throws InvalidPickException{
         board.print();
+    }
+
+    @Test
+    public void testNextPlayer() throws InvalidPickException {
+        assert(board.getNumAtHeap(1) == 4);
+        assert(board.getCurrPlayer().equals(Board.player.A));
+        board.PlayPick(1, 2);
+        //by player A, will change to B
+        assert(board.getCurrPlayer().equals(Board.player.B));
+        board.PlayPick(1, 2);
+        //by player B, will change to A
+        assert(board.getCurrPlayer().equals(Board.player.A));
+    }
+
+    @Test
+    public void testWinner() throws InvalidPickException {
+        // the player who take the last stone of heaps will win.
+
+        board.PlayPick(0, 3);
+        assert(board.getCurrPlayer().equals(Board.player.B));
+        assert(board.getWinner() == null);
+
+        board.PlayPick(1, 4);
+        assert(board.getCurrPlayer().equals(Board.player.A));
+        assert(board.getWinner() == null);
+
+        board.PlayPick(2, 5);
+        for (int i=0 ; i<3 ; ++i) assert(board.getNumAtHeap(i) == 0);
+        assert(board.getCurrPlayer().equals(Board.player.B));
+        assert(board.getWinner().equals(Board.player.A));
     }
 
 }
