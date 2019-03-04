@@ -55,7 +55,12 @@ public class ScoreBoard{
 	}
 
 	public void incrementNumOfLoses(Player player){
-		
+		if(player == Player.A){
+			scoreBoard[0][1] += 1;
+		}
+		else if(player == Player.B){
+			scoreBoard[1][1] += 1;
+		}
 	}
 
 	public void incrementNumOfTies(Player player){
