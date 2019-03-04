@@ -92,4 +92,14 @@ public class BoardTest {
         assert(board.getWinner().equals(Board.player.A));
     }
 
+    @Test
+    public void testGameOver() throws InvalidPickException {
+        // the player who take the last stone of heaps will win.
+
+        board.PlayPick(0, 3);
+        board.PlayPick(1, 4);
+        board.PlayPick(2, 5);
+        assert(board.isGameOver());
+    }
+
 }
