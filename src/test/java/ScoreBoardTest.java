@@ -59,4 +59,20 @@ public class ScoreBoardTest {
         assert(scoreBoard.getNumOfWins(ScoreBoard.Player.B) == 3);
         assert(scoreBoard.getNumOfWins(ScoreBoard.Player.NONE) == 0);
     }
+
+    @Test
+    public void testIncrementNumOfWins(){
+        int[][] scores = new int[2][3];
+        scores[0][1] = 1;
+        scores[1][1] = 2;
+        scoreBoard = new ScoreBoard(scores);
+
+        scoreBoard.incrementNumOfLoses(ScoreBoard.Player.A);
+        scoreBoard.incrementNumOfLoses(ScoreBoard.Player.B);
+        scoreBoard.incrementNumOfLoses(ScoreBoard.Player.NONE);
+
+        assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.A) == 2);
+        assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.B) == 3);
+        assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.NONE) == 0);
+    }
 }
