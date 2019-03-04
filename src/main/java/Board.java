@@ -7,7 +7,7 @@ public class Board {
     // number of stones in each heap should be decided by user
     //there is no draw, but I want to predict the possible winner
     //I will wirte the member function and vars before test.
-    public enum player {A, B, NONE};
+    public enum player {A, B};
     private int heap[];
     private int heaplen;
     private player currPlayer;
@@ -20,6 +20,7 @@ public class Board {
     }
 
     public void PlayPick(int heapNum, int numOfStones) throws InvalidPickException {
+
         if(heapNum < 0)
             throw new InvalidPickException("Less than 0 input of number of heap!!");
         if(heapNum >= heaplen)
@@ -28,7 +29,19 @@ public class Board {
             throw new InvalidPickException("too small or minus picking stones!!");
         if(numOfStones > heap[heapNum])
             throw new InvalidPickException("too big picking stones!!");
+
         heap[heapNum] -= numOfStones;
+
+        for(int i = 0 ; i < 3 ; ++i){
+            if(heap[i] != 0) break;
+            if(i == 2 ){winner = currPlayer;}
+        }
+
+        if(currPlayer.equals(player.A))
+            currPlayer = player.B;
+        else
+            currPlayer = player.A;
+
     }
 
     public void print(){
