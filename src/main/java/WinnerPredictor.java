@@ -14,15 +14,16 @@ public class WinnerPredictor {
     }
 
     public boolean checkState(int[] state){
-        return true;
+        int temp = 0;
+        for (int i = 0; i < state.length; ++i) {
+            temp ^= state[i];
+        }
+        if(temp == 0) return true;
+        return false;
     }
 
     public Board.player PredictWinner(int[] heap, Board.player currPlayer){
-        int temp = 0;
-        for (int i = 0; i < heap.length; ++i) {
-            temp ^= heap[i];
-        }
-        if(temp != 0){
+        if(!checkState(heap)){
             return currPlayer;
         }
         else{
@@ -36,19 +37,11 @@ public class WinnerPredictor {
     }
 
     public boolean GoodMoveCheck(int[] heap) {
-        int preXor = 0;
-        for (int i = 0; i < preState.length; ++i) {
-            preXor ^= preState[i];
-        }
-        int afterXor = 0;
-        for (int i = 0; i < heap.length; ++i) {
-            afterXor ^= heap[i];
-        }
 
-        if(afterXor == 0){
+        if(checkState(heap)){
             return true;
         }
-        if(preXor == 0){
+        if(checkState(preState)){
             return true;
         }
 
@@ -57,11 +50,7 @@ public class WinnerPredictor {
 
     public int[] GetGoodMove(int[] testState1) {
         int[] newState;
-        int temp = 0;
-        for (int i = 0; i < testState1.length; ++i) {
-            temp ^= testState1[i];
-        }
-        if(temp == 0){
+        if(checkState(testState1)){
             newState = new int[testState1.length];
             for (int j=1 ;j < testState1.length ;++j){
                 newState[j] = testState1[j];
@@ -83,11 +72,7 @@ public class WinnerPredictor {
 
                 for (int j=1 ;j < testState1[i];++j){
                     newState[i] = testState1[i]-j;
-                    temp = 0;
-                    for (int k = 0; k < newState.length; ++k) {
-                        temp ^= newState[k];
-                    }
-                    if(temp == 0) return newState;
+                    if(checkState(newState)) return newState;
                 }
             }
         }
