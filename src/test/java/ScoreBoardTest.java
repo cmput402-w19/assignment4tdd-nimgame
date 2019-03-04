@@ -17,7 +17,7 @@ public class ScoreBoardTest {
 
         assert(scoreBoard.getNumOfWins(ScoreBoard.Player.A) == 1);
         assert(scoreBoard.getNumOfWins(ScoreBoard.Player.B) == 2);
-        assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.NONE) == 0);
+        assert(scoreBoard.getNumOfWins(ScoreBoard.Player.NONE) == 0);
     }
 
     @Test
@@ -39,8 +39,8 @@ public class ScoreBoardTest {
         scores[1][2] = 2;
         scoreBoard = new ScoreBoard(scores);
 
-        assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.A) == 1);
-        assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.B) == 2);
-        assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.NONE) == 0);
+        assert(scoreBoard.getNumOfTies(ScoreBoard.Player.A) == 1);
+        assert(scoreBoard.getNumOfTies(ScoreBoard.Player.B) == 2);
+        assert(scoreBoard.getNumOfTies(ScoreBoard.Player.NONE) == 0);
     }
 }
