@@ -61,7 +61,7 @@ public class ScoreBoardTest {
     }
 
     @Test
-    public void testIncrementNumOfWins(){
+    public void testIncrementNumOfLoses(){
         int[][] scores = new int[2][3];
         scores[0][1] = 1;
         scores[1][1] = 2;
@@ -74,5 +74,21 @@ public class ScoreBoardTest {
         assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.A) == 2);
         assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.B) == 3);
         assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.NONE) == 0);
+    }
+
+    @Test
+    public void testIncrementNumOfTies(){
+        int[][] scores = new int[2][3];
+        scores[0][2] = 1;
+        scores[1][2] = 2;
+        scoreBoard = new ScoreBoard(scores);
+
+        scoreBoard.incrementNumOfTies(ScoreBoard.Player.A);
+        scoreBoard.incrementNumOfTies(ScoreBoard.Player.B);
+        scoreBoard.incrementNumOfTies(ScoreBoard.Player.NONE);
+
+        assert(scoreBoard.getNumOfTies(ScoreBoard.Player.A) == 2);
+        assert(scoreBoard.getNumOfTies(ScoreBoard.Player.B) == 3);
+        assert(scoreBoard.getNumOfTies(ScoreBoard.Player.NONE) == 0);
     }
 }
