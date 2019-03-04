@@ -13,7 +13,7 @@ public class WinnerPredictor {
         prePredictWinner = PredictWinner(testState1, a);
     }
 
-    public boolean checkState(int[] state){
+    private boolean checkState(int[] state){
         int temp = 0;
         for (int i = 0; i < state.length; ++i) {
             temp ^= state[i];
@@ -50,29 +50,20 @@ public class WinnerPredictor {
 
     public int[] GetGoodMove(int[] testState1) {
         int[] newState;
+        newState = new int[testState1.length];
+        for (int j=1 ;j < testState1.length ;++j){
+            newState[j] = testState1[j];
+        }
         if(checkState(testState1)){
-            newState = new int[testState1.length];
-            for (int j=1 ;j < testState1.length ;++j){
-                newState[j] = testState1[j];
-            }
+            //deep copy and -1 for the first one.
             newState[0] -= 1;
         }
         else{
-            newState = new int[testState1.length];
-            for (int j=1 ;j < testState1.length ;++j){
-                newState[j] = testState1[j];
-            }
-            for (int i=0 ;i<testState1.length; ++i){
-
-                //deep copy
-                newState = new int[testState1.length];
-                for (int j=1 ;j < testState1.length ;++j){
-                    newState[j] = testState1[j];
-                }
-
-                for (int j=1 ;j < testState1[i];++j){
+            for (int i = 0 ; i < testState1.length ; ++i){
+                for (int j = 1 ;j <= testState1[i];++j){
                     newState[i] = testState1[i]-j;
                     if(checkState(newState)) return newState;
+                    else newState[i] = testState1[i];
                 }
             }
         }
@@ -91,5 +82,10 @@ public class WinnerPredictor {
     public void setPrePredictWinner(Board.player a) {
         prePredictWinner = a;
     }
+    public void setPreState(int[] state) {
+        preState = state;
+    }
+
+
 
 }
