@@ -9,6 +9,14 @@ public class ScoreBoard{
 		this.scoreBoard = scoreBoard;
 	}
 
+	public void print(){
+		System.out.println("\nScore:");
+		System.out.println("Wins  (A, B): " + this.scoreBoard[0][0] + ", " + this.scoreBoard[1][0] + "; ");
+		System.out.println("Loses (A, B): " + this.scoreBoard[0][1] + ", " + this.scoreBoard[1][1] + "; ");
+		System.out.println("Draws (A, B): " + this.scoreBoard[0][2] + ", " + this.scoreBoard[1][2] + ";");
+		System.out.println("\n");
+	}
+
 	public int getNumOfWins(Player player){
 		switch (player) {
 			case A:
