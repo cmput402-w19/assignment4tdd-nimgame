@@ -12,10 +12,10 @@ public class ScoreBoardTest {
     public void testGetNumOfWins(){
         int[][] scores = new int[2][3];
         scores[0][0] = 1;
-        scores[1][0] = 1;
+        scores[1][0] = 2;
         scoreBoard = new ScoreBoard(scores);
 
         assert(scoreBoard.getNumOfWins(ScoreBoard.Player.A) == 1);
-        assert(scoreBoard.getNumOfWins(ScoreBoard.Player.B) == 1);
+        assert(scoreBoard.getNumOfWins(ScoreBoard.Player.B) == 2);
     }
 }
