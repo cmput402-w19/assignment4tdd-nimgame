@@ -14,14 +14,13 @@ public class ScoreBoard{
 	}
 
 	public int getNumOfWins(Player player){
-		if (player == Player.A){
-			return scoreBoard[0][0];
-		} 
-		else if (player == Player.B){
-			return scoreBoard[1][0];
-
-		} else{
-			return 0;
+		switch (player) {
+			case A:
+				return scoreBoard[0][0];
+			case B:
+				return scoreBoard[1][0];
+			default:
+				return 0;
 		}
 	}
 
