@@ -33,14 +33,13 @@ public class ScoreBoard{
 
 
 	public int getNumOfTies(Player player){
-		if(player == Player.A){
-			return scoreBoard[0][2];
-		}
-		else if(player == Player.B){
-			return scoreBoard[1][2];
-		}
-		else{
-			return 0;
+		switch (player) {
+			case A:
+				return scoreBoard[0][2];
+			case B:
+				return scoreBoard[1][2];
+			default:
+				return 0;
 		}
 	}
 
