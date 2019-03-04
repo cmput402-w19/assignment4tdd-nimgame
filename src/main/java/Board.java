@@ -2,7 +2,6 @@ import exceptions.InvalidPickException;
 
 public class Board {
 
-
     //fundmentally the game has to have three heaps and two fixed players
     // number of stones in each heap should be decided by user
     //there is no draw, but I want to predict the possible winner
@@ -44,6 +43,11 @@ public class Board {
 
     }
 
+    public boolean isGameOver() {
+        if(winner == null) return false;
+        else return true;
+    }
+
     public void print(){
         StringBuilder outputMsg = new StringBuilder();
         outputMsg.append("current heap state:   ");
@@ -63,5 +67,7 @@ public class Board {
     public player getWinner(){return winner;}
 
     public int getNumAtHeap(int heapIndex){return heap[heapIndex];}
+
+    public int[] getHeap(){return heap;}
 
 }
