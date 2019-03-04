@@ -15,18 +15,19 @@ public class Board {
 
     public Board(int[] heapArray){
         heaplen = heapArray.length;
-        heap = new int[heaplen];
-        for(int i=0; i < heaplen;++i){
-            heap[i] = heapArray[i];
-        }
+        heap = heapArray;
         currPlayer = player.A;
     }
 
     public void PlayPick(int heapNum, int numOfStones) throws InvalidPickException {
-        if(heapNum < 0 || heapNum >= heaplen)
-            throw new InvalidPickException("wrong input of number of heap!!");
-        if(numOfStones <= 0 || numOfStones > heap[heapNum])
-            throw new InvalidPickException("too small or too big picking stones!!");
+        if(heapNum < 0)
+            throw new InvalidPickException("Less than 0 input of number of heap!!");
+        if(heapNum >= heaplen)
+            throw new InvalidPickException("too big input of number of heap!!");
+        if(numOfStones <= 0)
+            throw new InvalidPickException("too small or minus picking stones!!");
+        if(numOfStones > heap[heapNum])
+            throw new InvalidPickException("too big picking stones!!");
         heap[heapNum] -= numOfStones;
     }
 
