@@ -66,11 +66,13 @@ public class ScoreBoard{
 	}
 
 	public void incrementNumOfTies(Player player){
-		if (player == Player.A){
-			scoreBoard[0][2] += 1;
-		}
-		else if(player == Player.B){
-			scoreBoard[1][2] += 1;
+		switch (player) {
+			case A:
+				scoreBoard[0][2] += 1;
+				break;
+			case B:
+				scoreBoard[1][2] += 1;
+				break;
 		}
 	}
 
