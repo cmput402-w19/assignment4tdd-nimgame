@@ -31,4 +31,16 @@ public class ScoreBoardTest {
         assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.B) == 2);
         assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.NONE) == 0);
     }
+
+    @Test
+    public void testGetNumOfTies(){
+        int[][] scores = new int[2][3];
+        scores[0][2] = 1;
+        scores[1][2] = 2;
+        scoreBoard = new ScoreBoard(scores);
+
+        assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.A) == 1);
+        assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.B) == 2);
+        assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.NONE) == 0);
+    }
 }
