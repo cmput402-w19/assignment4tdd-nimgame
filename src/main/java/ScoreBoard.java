@@ -2,12 +2,8 @@
 
 public class ScoreBoard{
 
-	public enum Player {A, B};
+	public enum Player {A, B, NONE};
 	private int[][] scoreBoard;
-
-	public ScoreBoard(){
-		scoreBoard = new int[2][3];
-	}
 
 	public ScoreBoard(int[][] scoreBoard){
 		this.scoreBoard = scoreBoard;
@@ -25,14 +21,13 @@ public class ScoreBoard{
 	}
 
 	public int getNumOfLoses(Player player){
-		if (player == Player.A){
-			return scoreBoard[0][1];
-		}
-		else if (player == Player.B){
-			return scoreBoard[1][1];
-		}
-		else{
-			return 0;
+		switch (player) {
+			case A:
+				return scoreBoard[0][1];
+			case B:
+				return scoreBoard[1][1];
+			default:
+				return 0;
 		}
 	}
 

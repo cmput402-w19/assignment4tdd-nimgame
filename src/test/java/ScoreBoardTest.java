@@ -28,5 +28,6 @@ public class ScoreBoardTest {
 
         assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.A) == 1);
         assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.B) == 2);
+        assert(scoreBoard.getNumOfLoses(ScoreBoard.Player.NONE) == 0);
     }
 }
