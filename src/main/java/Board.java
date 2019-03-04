@@ -64,6 +64,10 @@ public class Board {
         System.out.println(outputMsg.toString());
     }
 
+    public void setCurrPlayer(player player) {
+    	currPlayer = player;
+    }
+    
     public player getCurrPlayer() {return currPlayer;}
 
     public player getWinner(){return winner;}
