@@ -25,7 +25,15 @@ public class ScoreBoard{
 	}
 
 	public int getNumOfLoses(Player player){
-		return -1;
+		if (player == Player.A){
+			return scoreBoard[0][1];
+		}
+		else if (player == Player.B){
+			return scoreBoard[1][1];
+		}
+		else{
+			return 0;
+		}
 	}
 
 
